@@ -1,0 +1,253 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix sh-skos: <http://example.org/shapes/sh-skos/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+[]
+	a sh:ValidationReport ;
+	sh:conforms "false"^^xsd:boolean ;
+	sh:result
+		[
+			a sh:ValidationResult ;
+			sh:focusNode <http://example.org/kb/Collection-4c6ff5d3-9d20-48f6-b13f-71d3d3c1f8f8> ;
+			sh:resultMessage "Node kb:ConceptScheme-5d84c9ce-339c-4b9b-9b36-cfe91da19e57 must conform to one or more shapes in [ rdf:type sh:NodeShape ; sh:class skos:Concept ] , [ rdf:type sh:NodeShape ; sh:class skos:Collection ]" ;
+			sh:resultPath skos:member ;
+			sh:resultSeverity sh:Violation ;
+			sh:sourceConstraintComponent sh:OrConstraintComponent ;
+			sh:sourceShape sh-skos:member-subjects-member-shape ;
+			sh:value <http://example.org/kb/ConceptScheme-5d84c9ce-339c-4b9b-9b36-cfe91da19e57> ;
+		] ,
+		[
+			a sh:ValidationResult ;
+			sh:focusNode <http://example.org/kb/Concept-9abe6c53-19d9-4a14-8dd4-f92d562f3830> ;
+			sh:resultMessage "Value of kb:Concept-9abe6c53-19d9-4a14-8dd4-f92d562f3830->skos:broader != kb:Concept-16eb5c15-09b5-46d2-be41-054feb01609e" ;
+			sh:resultPath skos:broaderTransitive ;
+			sh:resultSeverity sh:Violation ;
+			sh:sourceConstraintComponent sh:EqualsConstraintComponent ;
+			sh:sourceShape sh-skos:broaderTransitive-subjects-broaderTransitive-shape ;
+			sh:value <http://example.org/kb/Concept-16eb5c15-09b5-46d2-be41-054feb01609e> ;
+		] ,
+		[
+			a sh:ValidationResult ;
+			sh:focusNode <http://example.org/kb/Concept-ea944f31-5f66-4d78-9221-c0e604529f97> ;
+			sh:resultSeverity sh:Violation ;
+			sh:sourceConstraint sh-skos:mappingRelation-subjects-inScheme-constraint ;
+			sh:sourceConstraintComponent sh:SPARQLConstraintComponent ;
+			sh:sourceShape sh-skos:mappingRelation-subjects-shape ;
+			sh:value <http://example.org/kb/Concept-8b2df155-9d5c-4729-9735-87837fd27294> ;
+		] ,
+		[
+			a sh:ValidationResult ;
+			sh:focusNode <http://example.org/kb/ConceptScheme-032127ed-bb9a-4862-a648-60424759022f> ;
+			sh:resultMessage "Value does not have class skos:Concept" ;
+			sh:resultPath skos:hasTopConcept ;
+			sh:resultSeverity sh:Violation ;
+			sh:sourceConstraintComponent sh:ClassConstraintComponent ;
+			sh:sourceShape sh-skos:hasTopConcept-subjects-hasTopConcept-shape ;
+			sh:value <http://example.org/kb/Thing-618b58ba-911e-4728-9299-305b6a9f2b2a> ;
+		] ,
+		[
+			a sh:ValidationResult ;
+			sh:focusNode <http://example.org/kb/ConceptScheme-142e515b-6d29-4a1c-97b0-9e85684d9b75> ;
+			sh:resultMessage "Value does not have class skos:Collection" ;
+			sh:resultSeverity sh:Violation ;
+			sh:sourceConstraintComponent sh:ClassConstraintComponent ;
+			sh:sourceShape sh-skos:member-subjects-shape ;
+			sh:value <http://example.org/kb/ConceptScheme-142e515b-6d29-4a1c-97b0-9e85684d9b75> ;
+		] ,
+		[
+			a sh:ValidationResult ;
+			sh:focusNode <http://example.org/kb/ConceptScheme-142e515b-6d29-4a1c-97b0-9e85684d9b75> ;
+			sh:resultMessage "Value node is designated a top concept of focus node, but focus node has a member that is a broader concept than the value node: $http://example.org/kb/Concept-c931b221-5ea1-491b-bdbd-a7c2eb341683." ;
+			sh:resultSeverity sh:Violation ;
+			sh:sourceConstraint sh-skos:hasTopConcept-subjects-hasTopConcept-constraint ;
+			sh:sourceConstraintComponent sh:SPARQLConstraintComponent ;
+			sh:sourceShape sh-skos:hasTopConcept-subjects-shape ;
+			sh:value <http://example.org/kb/Concept-d6af996a-571f-4b2a-83b2-6367317bd89f> ;
+		] ,
+		[
+			a sh:ValidationResult ;
+			sh:focusNode <http://example.org/kb/ConceptScheme-933d1cc9-7d60-436c-81d5-2bc52a1dfc84> ;
+			sh:resultMessage "Value does not have class skos:Collection" ;
+			sh:resultSeverity sh:Violation ;
+			sh:sourceConstraintComponent sh:ClassConstraintComponent ;
+			sh:sourceShape sh-skos:member-subjects-shape ;
+			sh:value <http://example.org/kb/ConceptScheme-933d1cc9-7d60-436c-81d5-2bc52a1dfc84> ;
+		] ,
+		[
+			a sh:ValidationResult ;
+			sh:focusNode <http://example.org/kb/ConceptScheme-933d1cc9-7d60-436c-81d5-2bc52a1dfc84> ;
+			sh:resultMessage "Value node is designated a top concept of focus node, but focus node has a member that is a broader concept than the value node: $http://example.org/kb/Concept-16eb5c15-09b5-46d2-be41-054feb01609e." ;
+			sh:resultSeverity sh:Violation ;
+			sh:sourceConstraint sh-skos:hasTopConcept-subjects-hasTopConcept-constraint ;
+			sh:sourceConstraintComponent sh:SPARQLConstraintComponent ;
+			sh:sourceShape sh-skos:hasTopConcept-subjects-shape ;
+			sh:value <http://example.org/kb/Concept-9abe6c53-19d9-4a14-8dd4-f92d562f3830> ;
+		] ,
+		[
+			a sh:ValidationResult ;
+			sh:focusNode <http://example.org/kb/OrderedCollection-2f6c7c8a-d082-43b9-8716-ddab37c4317c> ;
+			sh:resultMessage "Value of kb:OrderedCollection-2f6c7c8a-d082-43b9-8716-ddab37c4317c->skos:member != kb:Thing-e56c6398-b54a-4128-8048-23ec0e380c85" ;
+			sh:resultPath (
+				skos:memberList
+				[
+					sh:zeroOrMorePath rdf:next ;
+				]
+				rdf:first
+			) ;
+			sh:resultSeverity sh:Violation ;
+			sh:sourceConstraintComponent sh:EqualsConstraintComponent ;
+			sh:sourceShape sh-skos:memberList-subjects-memberList-equals-member-shape ;
+			sh:value <http://example.org/kb/Thing-e56c6398-b54a-4128-8048-23ec0e380c85> ;
+		] ,
+		[
+			a sh:ValidationResult ;
+			sh:focusNode <http://example.org/kb/Thing-04e64de8-f668-4289-a30d-67ca8d8455ee> ;
+			sh:resultMessage 'Value of kb:Thing-04e64de8-f668-4289-a30d-67ca8d8455ee->skos:altLabel, skos:prefLabel == Literal("1")' ;
+			sh:resultPath skos:hiddenLabel ;
+			sh:resultSeverity sh:Violation ;
+			sh:sourceConstraintComponent sh:DisjointConstraintComponent ;
+			sh:sourceShape sh-skos:hiddenLabel-subjects-hiddenLabel-shape ;
+			sh:value "1" ;
+		] ,
+		[
+			a sh:ValidationResult ;
+			sh:focusNode <http://example.org/kb/Thing-04e64de8-f668-4289-a30d-67ca8d8455ee> ;
+			sh:resultMessage 'Value of kb:Thing-04e64de8-f668-4289-a30d-67ca8d8455ee->skos:prefLabel, skos:hiddenLabel == Literal("1")' ;
+			sh:resultPath skos:altLabel ;
+			sh:resultSeverity sh:Violation ;
+			sh:sourceConstraintComponent sh:DisjointConstraintComponent ;
+			sh:sourceShape sh-skos:altLabel-subjects-altLabel-shape ;
+			sh:value "1" ;
+		] ,
+		[
+			a sh:ValidationResult ;
+			sh:focusNode <http://example.org/kb/Thing-34647fde-eb15-407f-ae7c-417e063026bf> ;
+			sh:resultMessage "skos:Collection and skos:ConceptScheme are disjoint classes."@en ;
+			sh:resultSeverity sh:Violation ;
+			sh:sourceConstraintComponent sh:NotConstraintComponent ;
+			sh:sourceShape sh-skos:Collection-disjointWith-ConceptScheme-shape ;
+			sh:value <http://example.org/kb/Thing-34647fde-eb15-407f-ae7c-417e063026bf> ;
+		] ,
+		[
+			a sh:ValidationResult ;
+			sh:focusNode <http://example.org/kb/Thing-35b0481e-603b-407a-b763-c15de79502b7> ;
+			sh:resultMessage "Value of kb:Thing-35b0481e-603b-407a-b763-c15de79502b7->skos:broadMatch, skos:relatedMatch == kb:Thing-2660035c-6d4b-469d-8fda-6607c6ab7bb1" ;
+			sh:resultPath skos:exactMatch ;
+			sh:resultSeverity sh:Violation ;
+			sh:sourceConstraintComponent sh:DisjointConstraintComponent ;
+			sh:sourceShape sh-skos:exactMatch-subjects-exactMatch-shape ;
+			sh:value <http://example.org/kb/Thing-2660035c-6d4b-469d-8fda-6607c6ab7bb1> ;
+		] ,
+		[
+			a sh:ValidationResult ;
+			sh:focusNode <http://example.org/kb/Thing-779fadbc-adbd-455d-a3d8-6ac150771b27> ;
+			sh:resultMessage "Value of kb:Thing-779fadbc-adbd-455d-a3d8-6ac150771b27->skos:broader != kb:Thing-41c108bc-a5a3-46f3-8226-05f8039bf330" ;
+			sh:resultPath skos:broaderTransitive ;
+			sh:resultSeverity sh:Violation ;
+			sh:sourceConstraintComponent sh:EqualsConstraintComponent ;
+			sh:sourceShape sh-skos:broaderTransitive-subjects-broaderTransitive-shape ;
+			sh:value <http://example.org/kb/Thing-41c108bc-a5a3-46f3-8226-05f8039bf330> ;
+		] ,
+		[
+			a sh:ValidationResult ;
+			sh:focusNode <http://example.org/kb/Thing-779fadbc-adbd-455d-a3d8-6ac150771b27> ;
+			sh:resultMessage "Value of kb:Thing-779fadbc-adbd-455d-a3d8-6ac150771b27->skos:broaderTransitive == kb:Thing-41c108bc-a5a3-46f3-8226-05f8039bf330" ;
+			sh:resultPath skos:related ;
+			sh:resultSeverity sh:Violation ;
+			sh:sourceConstraintComponent sh:DisjointConstraintComponent ;
+			sh:sourceShape sh-skos:related-subjects-related-shape ;
+			sh:value <http://example.org/kb/Thing-41c108bc-a5a3-46f3-8226-05f8039bf330> ;
+		] ,
+		[
+			a sh:ValidationResult ;
+			sh:focusNode <http://example.org/kb/Thing-9a6b02ac-6813-4a42-935c-2df05a3a3ac8> ;
+			sh:resultMessage "More than one String shares the same Language" ;
+			sh:resultPath skos:prefLabel ;
+			sh:resultSeverity sh:Violation ;
+			sh:sourceConstraintComponent sh:UniqueLangConstraintComponent ;
+			sh:sourceShape sh-skos:prefLabel-subjects-prefLabel-shape ;
+		] ,
+		[
+			a sh:ValidationResult ;
+			sh:focusNode <http://example.org/kb/Thing-b9487b23-bf71-47c4-a43f-7781e9e78b6b> ;
+			sh:resultMessage "skos:Collection and skos:Concept are disjoint classes."@en ;
+			sh:resultSeverity sh:Violation ;
+			sh:sourceConstraintComponent sh:NotConstraintComponent ;
+			sh:sourceShape sh-skos:Collection-disjointWith-Concept-shape ;
+			sh:value <http://example.org/kb/Thing-b9487b23-bf71-47c4-a43f-7781e9e78b6b> ;
+		] ,
+		[
+			a sh:ValidationResult ;
+			sh:focusNode <http://example.org/kb/Thing-bbf293b3-8c38-4307-871f-1cfbed662e08> ;
+			sh:resultMessage 'Value of kb:Thing-bbf293b3-8c38-4307-871f-1cfbed662e08->skos:altLabel, skos:hiddenLabel == Literal("1")' ;
+			sh:resultPath skos:prefLabel ;
+			sh:resultSeverity sh:Violation ;
+			sh:sourceConstraintComponent sh:DisjointConstraintComponent ;
+			sh:sourceShape sh-skos:prefLabel-subjects-prefLabel-shape ;
+			sh:value "1" ;
+		] ,
+		[
+			a sh:ValidationResult ;
+			sh:focusNode <http://example.org/kb/Thing-bbf293b3-8c38-4307-871f-1cfbed662e08> ;
+			sh:resultMessage 'Value of kb:Thing-bbf293b3-8c38-4307-871f-1cfbed662e08->skos:prefLabel, skos:hiddenLabel == Literal("1")' ;
+			sh:resultPath skos:altLabel ;
+			sh:resultSeverity sh:Violation ;
+			sh:sourceConstraintComponent sh:DisjointConstraintComponent ;
+			sh:sourceShape sh-skos:altLabel-subjects-altLabel-shape ;
+			sh:value "1" ;
+		] ,
+		[
+			a sh:ValidationResult ;
+			sh:focusNode <http://example.org/kb/Thing-cd061cb2-9c7d-4899-9aed-909d42ccae3a> ;
+			sh:resultMessage "skos:Concept and skos:ConceptScheme are disjoint classes."@en ;
+			sh:resultSeverity sh:Violation ;
+			sh:sourceConstraintComponent sh:NotConstraintComponent ;
+			sh:sourceShape sh-skos:Concept-disjointWith-ConceptScheme-shape ;
+			sh:value <http://example.org/kb/Thing-cd061cb2-9c7d-4899-9aed-909d42ccae3a> ;
+		] ,
+		[
+			a sh:ValidationResult ;
+			sh:focusNode <http://example.org/kb/Thing-f22fd1b0-7dc0-4b31-9d0c-dcfb0d123ba9> ;
+			sh:resultMessage 'Value of kb:Thing-f22fd1b0-7dc0-4b31-9d0c-dcfb0d123ba9->skos:altLabel, skos:hiddenLabel == Literal("1")' ;
+			sh:resultPath skos:prefLabel ;
+			sh:resultSeverity sh:Violation ;
+			sh:sourceConstraintComponent sh:DisjointConstraintComponent ;
+			sh:sourceShape sh-skos:prefLabel-subjects-prefLabel-shape ;
+			sh:value "1" ;
+		] ,
+		[
+			a sh:ValidationResult ;
+			sh:focusNode <http://example.org/kb/Thing-f22fd1b0-7dc0-4b31-9d0c-dcfb0d123ba9> ;
+			sh:resultMessage 'Value of kb:Thing-f22fd1b0-7dc0-4b31-9d0c-dcfb0d123ba9->skos:altLabel, skos:prefLabel == Literal("1")' ;
+			sh:resultPath skos:hiddenLabel ;
+			sh:resultSeverity sh:Violation ;
+			sh:sourceConstraintComponent sh:DisjointConstraintComponent ;
+			sh:sourceShape sh-skos:hiddenLabel-subjects-hiddenLabel-shape ;
+			sh:value "1" ;
+		] ,
+		[
+			a sh:ValidationResult ;
+			sh:focusNode <http://example.org/kb/Thing-fcb3c457-34a5-46d7-a474-ae558aa554c0> ;
+			sh:resultMessage "Value does not have class skos:Concept" ;
+			sh:resultPath skos:semanticRelation ;
+			sh:resultSeverity sh:Violation ;
+			sh:sourceConstraintComponent sh:ClassConstraintComponent ;
+			sh:sourceShape sh-skos:semanticRelation-subjects-semanticRelation-shape ;
+			sh:value <http://example.org/kb/Thing-43c92272-5ccb-416e-bd3d-b8e649dd0b27> ;
+		] ,
+		[
+			a sh:ValidationResult ;
+			sh:focusNode <http://example.org/kb/Thing-fcb3c457-34a5-46d7-a474-ae558aa554c0> ;
+			sh:resultMessage "Value does not have class skos:Concept" ;
+			sh:resultSeverity sh:Violation ;
+			sh:sourceConstraintComponent sh:ClassConstraintComponent ;
+			sh:sourceShape sh-skos:semanticRelation-subjects-shape ;
+			sh:value <http://example.org/kb/Thing-fcb3c457-34a5-46d7-a474-ae558aa554c0> ;
+		]
+		;
+	.
+
