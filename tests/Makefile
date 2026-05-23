@@ -20,6 +20,8 @@ top_srcdir := $(shell cd .. ; pwd)
 
 uco_srcdir := $(top_srcdir)/dependencies/UCO
 
+RDF_TOOLKIT_JAR := $(uco_srcdir)/lib/rdf-toolkit.jar
+
 all: \
   generated-exemplars-expanded.ttl
 
@@ -37,6 +39,7 @@ all: \
   $(top_srcdir)/ontology/generated-ontology.ttl \
   $(top_srcdir)/shapes/generated-local.ttl \
   concepts_excused.txt \
+  exemplars_XFAIL_validation.ttl \
   exemplars.ttl \
   test_exemplar_coverage.py
 	source $(top_srcdir)/venv/bin/activate \
@@ -44,7 +47,7 @@ all: \
 	    test_exemplar_coverage.py
 	source $(top_srcdir)/venv/bin/activate \
 	  && pytest \
-	    --log-level=DEBUG
+	    --log-level=DEBUG -vv
 	touch $@
 
 check: \
@@ -56,6 +59,31 @@ clean:
 	@rm -f \
 	  .*.done.log \
 	  generated-*
+
+exemplars_XFAIL_validation.ttl: \
+  $(RDF_TOOLKIT_JAR) \
+  $(top_srcdir)/.venv.done.log \
+  $(top_srcdir)/ontology/generated-ontology.ttl \
+  $(top_srcdir)/shapes/generated-shapes.ttl \
+  exemplars_XFAIL.ttl
+	source $(top_srcdir)/venv/bin/activate \
+	  && pyshacl \
+	    --format turtle \
+	    --metashacl \
+	    --ont-graph $(top_srcdir)/ontology/generated-ontology.ttl \
+	    --shacl $(top_srcdir)/shapes/generated-shapes.ttl \
+	    exemplars_XFAIL.ttl \
+	    > __$@ \
+	    ; rc=$$? ; test 1 -eq $$rc
+	test -s __$@
+	java -jar $(RDF_TOOLKIT_JAR) \
+	  --inline-blank-nodes \
+	  --source __$@ \
+	  --source-format turtle \
+	  --target _$@ \
+	  --target-format turtle
+	rm __$@
+	mv _$@ $@
 
 generated-exemplars-entailment.ttl: \
   $(top_srcdir)/.venv.done.log \

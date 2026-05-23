@@ -28,7 +28,7 @@ RDF_TOOLKIT_JAR := $(uco_srcdir)/lib/rdf-toolkit.jar
 # Note that to support the catalog-v001.xml preconditions, this list
 # must only be files in this directory.
 normalized_ttls := \
-  formatted-example.ttl
+  formatted-skos.ttl
 
 all: \
   catalog-v001.xml
@@ -62,20 +62,20 @@ clean:
 	  $(normalized_ttls) \
 	  catalog-v001.xml
 
-# TODO: Adapt this recipe to normalize a submodule's file, or downloaded
-# file, in the same manner as CDO ontologies are syntax-normalized.
-formatted-example.ttl: \
-  example/example.owl \
-  $(RDF_TOOLKIT_JAR) \
-  $(top_srcdir)/.venv.done.log
+formatted-skos.ttl:
+	wget \
+	  --output-document=__$@ \
+	  http://www.w3.org/2004/02/skos/core
 	source $(top_srcdir)/venv/bin/activate \
 	  && pyshacl \
+	    --data-file-format xml \
 	    --shacl UCO/ontology/owl/owl.ttl \
-	    $<
+	    __$@
 	java -jar $(RDF_TOOLKIT_JAR) \
 	  --inline-blank-nodes \
-	  --source $< \
+	  --source __$@ \
 	  --source-format rdf-xml \
 	  --target _$@ \
 	  --target-format turtle
+	rm __$@
 	mv _$@ $@

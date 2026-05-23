@@ -1,2 +1,3 @@
-http://example.org/ontology/example/0.0.1	${top_srcdir}/dependencies/formatted-example.ttl
-http://example.org/shapes/sh-example	${top_srcdir}/shapes/sh-example.ttl
+http://example.org/shapes/sh-skos	${top_srcdir}/shapes/sh-skos.ttl
+http://example.org/shapes/sh-skos-conventional	${top_srcdir}/shapes/sh-skos-conventional.ttl
+http://www.w3.org/2004/02/skos/core	${top_srcdir}/dependencies/formatted-skos.ttl

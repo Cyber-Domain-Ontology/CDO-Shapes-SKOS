@@ -1,0 +1,329 @@
+# imports: http://www.w3.org/2004/02/skos/core
+
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix sh-skos: <http://example.org/shapes/sh-skos/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/shapes/sh-skos>
+	a owl:Ontology ;
+	rdfs:comment "This shapes graph is a validating null profile of SKOS, checking all noted entailments and requirements from the SKOS RDF file that are not described as 'conventional.'"@en ;
+	rdfs:seeAlso <https://github.com/w3c/dx-prof/issues/56> ;
+	owl:imports <http://www.w3.org/2004/02/skos/core> ;
+	.
+
+sh-skos:Collection-disjointWith-Concept-shape
+	a sh:NodeShape ;
+	sh:message "skos:Collection and skos:Concept are disjoint classes."@en ;
+	sh:not [
+		a sh:NodeShape ;
+		sh:class skos:Concept ;
+	] ;
+	sh:targetClass skos:Collection ;
+	.
+
+sh-skos:Collection-disjointWith-ConceptScheme-shape
+	a sh:NodeShape ;
+	sh:message "skos:Collection and skos:ConceptScheme are disjoint classes."@en ;
+	sh:not [
+		a sh:NodeShape ;
+		sh:class skos:ConceptScheme ;
+	] ;
+	sh:targetClass skos:Collection ;
+	.
+
+sh-skos:Collection-shape
+	a sh:NodeShape ;
+	sh:targetClass skos:Collection ;
+	.
+
+sh-skos:Concept-disjointWith-ConceptScheme-shape
+	a sh:NodeShape ;
+	sh:message "skos:Concept and skos:ConceptScheme are disjoint classes."@en ;
+	sh:not [
+		a sh:NodeShape ;
+		sh:class skos:ConceptScheme ;
+	] ;
+	sh:targetClass skos:Concept ;
+	.
+
+sh-skos:Concept-shape
+	a sh:NodeShape ;
+	sh:targetClass skos:Concept ;
+	.
+
+sh-skos:ConceptScheme-shape
+	a sh:NodeShape ;
+	sh:targetClass skos:ConceptScheme ;
+	.
+
+sh-skos:OrderedCollection-shape
+	a sh:NodeShape ;
+	sh:targetClass skos:OrderedCollection ;
+	.
+
+sh-skos:altLabel-subjects-altLabel-shape
+	a sh:PropertyShape ;
+	sh:disjoint
+		skos:hiddenLabel ,
+		skos:prefLabel
+		;
+	sh:nodeKind sh:Literal ;
+	sh:path skos:altLabel ;
+	.
+
+sh-skos:altLabel-subjects-shape
+	a sh:NodeShape ;
+	sh:property sh-skos:altLabel-subjects-altLabel-shape ;
+	sh:targetSubjectsOf skos:altLabel ;
+	.
+
+sh-skos:broadMatch-subjects-shape
+	a sh:NodeShape ;
+	sh:targetSubjectsOf skos:broadMatch ;
+	.
+
+sh-skos:broader-subjects-shape
+	a sh:NodeShape ;
+	sh:targetSubjectsOf skos:broader ;
+	.
+
+sh-skos:broaderTransitive-subjects-shape
+	a sh:NodeShape ;
+	sh:targetSubjectsOf skos:broaderTransitive ;
+	.
+
+sh-skos:changeNote-subjects-shape
+	a sh:NodeShape ;
+	sh:targetSubjectsOf skos:changeNote ;
+	.
+
+sh-skos:closeMatch-subjects-shape
+	a sh:NodeShape ;
+	sh:targetSubjectsOf skos:closeMatch ;
+	.
+
+sh-skos:definition-subjects-shape
+	a sh:NodeShape ;
+	sh:targetSubjectsOf skos:definition ;
+	.
+
+sh-skos:editorialNote-subjects-shape
+	a sh:NodeShape ;
+	sh:targetSubjectsOf skos:editorialNote ;
+	.
+
+sh-skos:exactMatch-subjects-exactMatch-shape
+	a sh:PropertyShape ;
+	sh:disjoint
+		skos:broadMatch ,
+		skos:relatedMatch
+		;
+	sh:path skos:exactMatch ;
+	.
+
+sh-skos:exactMatch-subjects-shape
+	a sh:NodeShape ;
+	sh:property sh-skos:exactMatch-subjects-exactMatch-shape ;
+	sh:targetSubjectsOf skos:exactMatch ;
+	.
+
+sh-skos:example-subjects-shape
+	a sh:NodeShape ;
+	sh:targetSubjectsOf skos:example ;
+	.
+
+sh-skos:hasTopConcept-subjects-hasTopConcept-shape
+	a sh:PropertyShape ;
+	sh:class skos:Concept ;
+	sh:path skos:hasTopConcept ;
+	.
+
+sh-skos:hasTopConcept-subjects-shape
+	a sh:NodeShape ;
+	sh:class skos:ConceptScheme ;
+	sh:property sh-skos:hasTopConcept-subjects-hasTopConcept-shape ;
+	sh:targetSubjectsOf skos:hasTopConcept ;
+	.
+
+sh-skos:hiddenLabel-subjects-hiddenLabel-shape
+	a sh:PropertyShape ;
+	sh:disjoint
+		skos:altLabel ,
+		skos:prefLabel
+		;
+	sh:nodeKind sh:Literal ;
+	sh:path skos:hiddenLabel ;
+	.
+
+sh-skos:hiddenLabel-subjects-shape
+	a sh:NodeShape ;
+	sh:property sh-skos:hiddenLabel-subjects-hiddenLabel-shape ;
+	sh:targetSubjectsOf skos:hiddenLabel ;
+	.
+
+sh-skos:historyNote-subjects-shape
+	a sh:NodeShape ;
+	sh:targetSubjectsOf skos:historyNote ;
+	.
+
+sh-skos:inScheme-subjects-inScheme-shape
+	a sh:PropertyShape ;
+	sh:class skos:ConceptScheme ;
+	sh:path skos:inScheme ;
+	.
+
+sh-skos:inScheme-subjects-shape
+	a sh:NodeShape ;
+	sh:property sh-skos:inScheme-subjects-inScheme-shape ;
+	sh:targetSubjectsOf skos:inScheme ;
+	.
+
+sh-skos:mappingRelation-subjects-shape
+	a sh:NodeShape ;
+	sh:targetSubjectsOf skos:mappingRelation ;
+	.
+
+sh-skos:member-subjects-member-shape
+	a sh:PropertyShape ;
+	sh:or (
+		[
+			a sh:NodeShape ;
+			sh:class skos:Concept ;
+		]
+		[
+			a sh:NodeShape ;
+			sh:class skos:Collection ;
+		]
+	) ;
+	sh:path skos:member ;
+	.
+
+sh-skos:member-subjects-shape
+	a sh:NodeShape ;
+	sh:class skos:Collection ;
+	sh:property sh-skos:member-subjects-member-shape ;
+	sh:targetSubjectsOf skos:member ;
+	.
+
+sh-skos:memberList-subjects-memberList-equals-member-shape
+	a sh:PropertyShape ;
+	rdfs:comment '"For any resource, every item in the list given as the value of the skos:memberList property is also a value of the skos:member property."'@en ;
+	sh:equals skos:member ;
+	sh:path (
+		skos:memberList
+		[
+			sh:zeroOrMorePath rdf:next ;
+		]
+		rdf:first
+	) ;
+	.
+
+sh-skos:memberList-subjects-shape
+	a sh:NodeShape ;
+	sh:class skos:OrderedCollection ;
+	sh:property sh-skos:memberList-subjects-memberList-equals-member-shape ;
+	sh:targetSubjectsOf skos:memberList ;
+	.
+
+sh-skos:narrowMatch-subjects-shape
+	a sh:NodeShape ;
+	sh:targetSubjectsOf skos:narrowMatch ;
+	.
+
+sh-skos:narrower-subjects-shape
+	a sh:NodeShape ;
+	sh:targetSubjectsOf skos:narrower ;
+	.
+
+sh-skos:narrowerTransitive-subjects-shape
+	a sh:NodeShape ;
+	sh:targetSubjectsOf skos:narrowerTransitive ;
+	.
+
+sh-skos:notation-subjects-notation-shape
+	a sh:PropertyShape ;
+	sh:nodeKind sh:Literal ;
+	sh:path skos:notation ;
+	.
+
+sh-skos:notation-subjects-shape
+	a sh:NodeShape ;
+	sh:property sh-skos:notation-subjects-notation-shape ;
+	sh:targetSubjectsOf skos:notation ;
+	.
+
+sh-skos:note-subjects-shape
+	a sh:NodeShape ;
+	sh:targetSubjectsOf skos:note ;
+	.
+
+sh-skos:prefLabel-subjects-prefLabel-shape
+	a sh:PropertyShape ;
+	rdfs:comment 'TODO: "A resource has ... no more than one value of skos:prefLabel without language tag."'@en ;
+	sh:disjoint
+		skos:altLabel ,
+		skos:hiddenLabel
+		;
+	sh:nodeKind sh:Literal ;
+	sh:path skos:prefLabel ;
+	sh:uniqueLang "true"^^xsd:boolean ;
+	.
+
+sh-skos:prefLabel-subjects-shape
+	a sh:NodeShape ;
+	sh:property sh-skos:prefLabel-subjects-prefLabel-shape ;
+	sh:targetSubjectsOf skos:prefLabel ;
+	.
+
+sh-skos:related-subjects-related-shape
+	a sh:PropertyShape ;
+	sh:disjoint skos:broaderTransitive ;
+	sh:path skos:related ;
+	.
+
+sh-skos:related-subjects-shape
+	a sh:NodeShape ;
+	sh:property sh-skos:related-subjects-related-shape ;
+	sh:targetSubjectsOf skos:related ;
+	.
+
+sh-skos:relatedMatch-subjects-shape
+	a sh:NodeShape ;
+	sh:targetSubjectsOf skos:relatedMatch ;
+	.
+
+sh-skos:scopeNote-subjects-shape
+	a sh:NodeShape ;
+	sh:targetSubjectsOf skos:scopeNote ;
+	.
+
+sh-skos:semanticRelation-subjects-semanticRelation-shape
+	a sh:PropertyShape ;
+	sh:class skos:Concept ;
+	sh:path skos:semanticRelation ;
+	.
+
+sh-skos:semanticRelation-subjects-shape
+	a sh:NodeShape ;
+	sh:class skos:Concept ;
+	sh:property sh-skos:semanticRelation-subjects-semanticRelation-shape ;
+	sh:targetSubjectsOf skos:semanticRelation ;
+	.
+
+sh-skos:topConceptOf-subjects-shape
+	a sh:NodeShape ;
+	sh:class skos:Concept ;
+	sh:property sh-skos:topConceptOf-subjects-topConceptOf-shape ;
+	sh:targetSubjectsOf skos:topConceptOf ;
+	.
+
+sh-skos:topConceptOf-subjects-topConceptOf-shape
+	a sh:PropertyShape ;
+	sh:class skos:ConceptScheme ;
+	sh:path skos:topConceptOf ;
+	.
+

@@ -1,0 +1,229 @@
+@prefix drafting: <http://example.org/ontology/drafting/> .
+@prefix kb: <http://example.org/kb/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh-skos: <http://example.org/shapes/sh-skos/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+kb:Collection-4c6ff5d3-9d20-48f6-b13f-71d3d3c1f8f8
+	a skos:Collection ;
+	rdfs:seeAlso sh-skos:member-subjects-member-shape ;
+	skos:member kb:ConceptScheme-5d84c9ce-339c-4b9b-9b36-cfe91da19e57 ;
+	.
+
+kb:Concept-16eb5c15-09b5-46d2-be41-054feb01609e
+	a skos:Concept ;
+	rdfs:seeAlso sh-skos:hasTopConcept-subjects-hasTopConcept-constraint ;
+	.
+
+kb:Concept-8b2df155-9d5c-4729-9735-87837fd27294
+	a skos:Concept ;
+	rdfs:seeAlso sh-skos:mappingRelation-subjects-inScheme-constraint ;
+	skos:inScheme kb:ConceptScheme-8b44b70d-ef51-4eff-8958-828cfa6be3c0 ;
+	.
+
+kb:Concept-9abe6c53-19d9-4a14-8dd4-f92d562f3830
+	a skos:Concept ;
+	rdfs:seeAlso
+		sh-skos:broaderTransitive-subjects-broaderTransitive-shape ,
+		sh-skos:hasTopConcept-subjects-hasTopConcept-constraint
+		;
+	skos:broaderTransitive kb:Concept-16eb5c15-09b5-46d2-be41-054feb01609e ;
+	.
+
+kb:Concept-c931b221-5ea1-491b-bdbd-a7c2eb341683
+	a skos:Concept ;
+	rdfs:seeAlso sh-skos:hasTopConcept-subjects-hasTopConcept-constraint ;
+	.
+
+kb:Concept-d6af996a-571f-4b2a-83b2-6367317bd89f
+	a skos:Concept ;
+	rdfs:seeAlso sh-skos:hasTopConcept-subjects-hasTopConcept-constraint ;
+	skos:broader kb:Concept-c931b221-5ea1-491b-bdbd-a7c2eb341683 ;
+	.
+
+kb:Concept-ea944f31-5f66-4d78-9221-c0e604529f97
+	a skos:Concept ;
+	rdfs:seeAlso sh-skos:mappingRelation-subjects-inScheme-constraint ;
+	skos:inScheme kb:ConceptScheme-8b44b70d-ef51-4eff-8958-828cfa6be3c0 ;
+	skos:mappingRelation kb:Concept-8b2df155-9d5c-4729-9735-87837fd27294 ;
+	.
+
+kb:ConceptScheme-032127ed-bb9a-4862-a648-60424759022f
+	a skos:ConceptScheme ;
+	rdfs:seeAlso sh-skos:hasTopConcept-subjects-hasTopConcept-shape ;
+	skos:hasTopConcept kb:Thing-618b58ba-911e-4728-9299-305b6a9f2b2a ;
+	.
+
+kb:ConceptScheme-142e515b-6d29-4a1c-97b0-9e85684d9b75
+	a skos:ConceptScheme ;
+	rdfs:seeAlso sh-skos:hasTopConcept-subjects-hasTopConcept-constraint ;
+	skos:hasTopConcept kb:Concept-d6af996a-571f-4b2a-83b2-6367317bd89f ;
+	skos:member
+		kb:Concept-c931b221-5ea1-491b-bdbd-a7c2eb341683 ,
+		kb:Concept-d6af996a-571f-4b2a-83b2-6367317bd89f
+		;
+	.
+
+kb:ConceptScheme-5d84c9ce-339c-4b9b-9b36-cfe91da19e57
+	a skos:ConceptScheme ;
+	rdfs:seeAlso sh-skos:member-subjects-member-shape ;
+	.
+
+kb:ConceptScheme-8b44b70d-ef51-4eff-8958-828cfa6be3c0
+	a skos:ConceptScheme ;
+	rdfs:seeAlso sh-skos:mappingRelation-subjects-inScheme-constraint ;
+	.
+
+kb:ConceptScheme-933d1cc9-7d60-436c-81d5-2bc52a1dfc84
+	a skos:ConceptScheme ;
+	rdfs:seeAlso sh-skos:hasTopConcept-subjects-hasTopConcept-constraint ;
+	skos:hasTopConcept kb:Concept-9abe6c53-19d9-4a14-8dd4-f92d562f3830 ;
+	skos:member
+		kb:Concept-16eb5c15-09b5-46d2-be41-054feb01609e ,
+		kb:Concept-9abe6c53-19d9-4a14-8dd4-f92d562f3830
+		;
+	.
+
+kb:OrderedCollection-2f6c7c8a-d082-43b9-8716-ddab37c4317c
+	a skos:OrderedCollection ;
+	rdfs:seeAlso sh-skos:memberList-subjects-memberList-equals-member-shape ;
+	skos:memberList (
+		kb:Thing-e56c6398-b54a-4128-8048-23ec0e380c85
+	) ;
+	.
+
+kb:Thing-04e64de8-f668-4289-a30d-67ca8d8455ee
+	a owl:Thing ;
+	rdfs:seeAlso
+		sh-skos:altLabel-subjects-altLabel-shape ,
+		sh-skos:hiddenLabel-subjects-hiddenLabel-shape
+		;
+	skos:altLabel "1" ;
+	skos:hiddenLabel "1" ;
+	.
+
+kb:Thing-2660035c-6d4b-469d-8fda-6607c6ab7bb1
+	a owl:Thing ;
+	rdfs:seeAlso sh-skos:exactMatch-subjects-exactMatch-shape ;
+	.
+
+kb:Thing-34647fde-eb15-407f-ae7c-417e063026bf
+	a
+		skos:Collection ,
+		skos:ConceptScheme
+		;
+	rdfs:seeAlso sh-skos:Collection-disjointWith-ConceptScheme-shape ;
+	.
+
+kb:Thing-35b0481e-603b-407a-b763-c15de79502b7
+	a owl:Thing ;
+	rdfs:seeAlso sh-skos:exactMatch-subjects-exactMatch-shape ;
+	skos:broadMatch kb:Thing-2660035c-6d4b-469d-8fda-6607c6ab7bb1 ;
+	skos:exactMatch kb:Thing-2660035c-6d4b-469d-8fda-6607c6ab7bb1 ;
+	.
+
+kb:Thing-41c108bc-a5a3-46f3-8226-05f8039bf330
+	a owl:Thing ;
+	rdfs:seeAlso sh-skos:related-subjects-related-shape ;
+	.
+
+kb:Thing-43b3ee79-1abf-4653-ae18-c2452953baf8
+	a owl:Thing ;
+	rdfs:seeAlso sh-skos:related-subjects-related-shape ;
+	.
+
+kb:Thing-43c92272-5ccb-416e-bd3d-b8e649dd0b27
+	a owl:Thing ;
+	rdfs:seeAlso sh-skos:semanticRelation-subjects-semanticRelation-shape ;
+	.
+
+kb:Thing-455a63de-2124-4e82-9a7b-117812c37da3
+	a owl:Thing ;
+	rdfs:seeAlso sh-skos:prefLabel-subjects-prefLabel-shape ;
+	skos:prefLabel
+		"A" ,
+		"B"
+		;
+	.
+
+kb:Thing-618b58ba-911e-4728-9299-305b6a9f2b2a
+	a owl:Thing ;
+	rdfs:seeAlso sh-skos:hasTopConcept-subjects-hasTopConcept-shape ;
+	.
+
+kb:Thing-779fadbc-adbd-455d-a3d8-6ac150771b27
+	a owl:Thing ;
+	rdfs:seeAlso
+		sh-skos:broaderTransitive-subjects-broaderTransitive-shape ,
+		sh-skos:related-subjects-related-shape
+		;
+	skos:broaderTransitive kb:Thing-41c108bc-a5a3-46f3-8226-05f8039bf330 ;
+	skos:related kb:Thing-41c108bc-a5a3-46f3-8226-05f8039bf330 ;
+	.
+
+kb:Thing-9a6b02ac-6813-4a42-935c-2df05a3a3ac8
+	a owl:Thing ;
+	rdfs:seeAlso sh-skos:prefLabel-subjects-prefLabel-shape ;
+	skos:prefLabel
+		"A"@en ,
+		"B"@en
+		;
+	.
+
+kb:Thing-b9487b23-bf71-47c4-a43f-7781e9e78b6b
+	a
+		skos:Collection ,
+		skos:Concept
+		;
+	rdfs:seeAlso sh-skos:Collection-disjointWith-Concept-shape ;
+	.
+
+kb:Thing-bbf293b3-8c38-4307-871f-1cfbed662e08
+	a owl:Thing ;
+	rdfs:seeAlso
+		sh-skos:altLabel-subjects-altLabel-shape ,
+		sh-skos:prefLabel-subjects-prefLabel-shape
+		;
+	skos:altLabel "1" ;
+	skos:prefLabel "1" ;
+	.
+
+kb:Thing-cd061cb2-9c7d-4899-9aed-909d42ccae3a
+	a
+		skos:Concept ,
+		skos:ConceptScheme
+		;
+	rdfs:seeAlso sh-skos:Concept-disjointWith-ConceptScheme-shape ;
+	.
+
+kb:Thing-d8d4da26-346e-4f04-ad5c-227ac33610fb
+	a owl:Thing ;
+	rdfs:seeAlso sh-skos:related-subjects-related-shape ;
+	skos:broader kb:Thing-43b3ee79-1abf-4653-ae18-c2452953baf8 ;
+	skos:related kb:Thing-43b3ee79-1abf-4653-ae18-c2452953baf8 ;
+	.
+
+kb:Thing-e56c6398-b54a-4128-8048-23ec0e380c85
+	a owl:Thing ;
+	rdfs:seeAlso sh-skos:memberList-subjects-memberList-equals-member-shape ;
+	.
+
+kb:Thing-f22fd1b0-7dc0-4b31-9d0c-dcfb0d123ba9
+	a owl:Thing ;
+	rdfs:seeAlso
+		sh-skos:hiddenLabel-subjects-hiddenLabel-shape ,
+		sh-skos:prefLabel-subjects-prefLabel-shape
+		;
+	skos:hiddenLabel "1" ;
+	skos:prefLabel "1" ;
+	.
+
+kb:Thing-fcb3c457-34a5-46d7-a474-ae558aa554c0
+	a owl:Thing ;
+	rdfs:seeAlso sh-skos:semanticRelation-subjects-semanticRelation-shape ;
+	skos:semanticRelation kb:Thing-43c92272-5ccb-416e-bd3d-b8e649dd0b27 ;
+	.
+

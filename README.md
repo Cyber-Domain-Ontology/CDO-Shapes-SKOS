@@ -2,7 +2,7 @@
 
 ![Repository Status](https://img.shields.io/badge/-exploratory-informational)
 
-This repository provides [SHACL](https://www.w3.org/TR/shacl/) shapes to review usage of [Example](http://example.org/ontology).
+This repository provides [SHACL](https://www.w3.org/TR/shacl/) shapes to review usage of [SKOS](https://www.w3.org/TR/2009/REC-skos-reference-20090818/).
 
 The CDO Shapes development rationale and design is [here](https://cyberdomainontology.org/ontology/development/#shapes).
 

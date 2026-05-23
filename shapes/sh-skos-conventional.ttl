@@ -1,0 +1,98 @@
+# imports: http://example.org/shapes/sh-skos
+
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix sh-skos: <http://example.org/shapes/sh-skos/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/shapes/sh-skos-conventional>
+	a owl:Ontology ;
+	rdfs:comment "This shapes graph is a validating profile of SKOS, checking all noted entailments and requirements from the SKOS RDF file that are described as 'conventional.'"@en ;
+	owl:imports <http://example.org/shapes/sh-skos> ;
+	.
+
+sh-skos:broaderTransitive-subjects-broaderTransitive-shape
+	a sh:PropertyShape ;
+	sh:equals skos:broader ;
+	sh:path skos:broaderTransitive ;
+	.
+
+sh-skos:broaderTransitive-subjects-shape
+	sh:property sh-skos:broaderTransitive-subjects-broaderTransitive-shape ;
+	.
+
+sh-skos:hasTopConcept-subjects-hasTopConcept-constraint
+	a sh:SPARQLConstraint ;
+	sh:message "Value node is designated a top concept of focus node, but focus node has a member that is a broader concept than the value node: ${?nHigherConceptInScheme}."@en ;
+	sh:select """
+SELECT $this ?value ?nHigherConceptInScheme
+WHERE {
+	$this
+		skos:hasTopConcept ?value ;
+		skos:member ?nHigherConceptInScheme ;
+		.
+	?value
+		skos:broader|skos:broaderTransitive ?nHigherConceptInScheme ;
+		.
+}
+""" ;
+	.
+
+sh-skos:hasTopConcept-subjects-shape
+	sh:sparql sh-skos:hasTopConcept-subjects-hasTopConcept-constraint ;
+	.
+
+sh-skos:mappingRelation-subjects-inScheme-constraint
+	a sh:SPARQLConstraint ;
+	sh:select """
+SELECT $this ?value
+WHERE {
+	$this
+		skos:inScheme ?nConceptScheme1 ;
+		skos:mappingRelation ?value ;
+		.	
+	?value
+		skos:inScheme ?nConceptScheme1 ;
+		.	
+	FILTER NOT EXISTS {
+		$this
+			skos:inScheme ?nConceptScheme2 ;
+			.
+		FILTER (?nConceptScheme1 != ?nConceptScheme2)
+	}
+	FILTER NOT EXISTS {
+		?value
+			skos:inScheme ?nConceptScheme2 ;
+			.
+		FILTER (?nConceptScheme1 != ?nConceptScheme2)
+	}
+}
+""" ;
+	.
+
+sh-skos:mappingRelation-subjects-shape
+	sh:sparql sh-skos:mappingRelation-subjects-inScheme-constraint ;
+	.
+
+sh-skos:narrowerTransitive-subjects-narrowerTransitive-shape
+	a sh:PropertyShape ;
+	sh:equals skos:narrower ;
+	sh:path skos:narrowerTransitive ;
+	.
+
+sh-skos:narrowerTransitive-subjects-shape
+	sh:property sh-skos:narrowerTransitive-subjects-narrowerTransitive-shape ;
+	.
+
+sh-skos:notation-subjects-notation-typedLiteral-shape
+	a sh:PropertyShape ;
+	sh:message '"By convention, skos:notation is used with a typed literal in the object position of the triple."'@en ;
+	sh:not [
+		sh:datatype xsd:string ;
+	] ;
+	sh:path skos:notation ;
+	.
+

@@ -18,7 +18,7 @@ import logging
 from pathlib import Path
 from typing import Generator, Optional, Set
 
-from rdflib import SH, BNode, Graph, URIRef
+from rdflib import SH, BNode, Graph, Namespace, URIRef
 from rdflib.term import IdentifiedNode
 
 NS_SH = SH
@@ -155,6 +155,50 @@ ASK {
     assert properties_mapped <= (
         properties_with_exemplars | concepts_excused
     ) and classes_mapped <= (classes_with_exemplars | concepts_excused)
+
+
+def test_exemplar_xfail_validation_coverage() -> None:
+    validation_graph = Graph()
+    validation_graph.parse("exemplars_XFAIL_validation.ttl")
+
+    ns_sh_skos = Namespace("http://example.org/shapes/sh-skos/")
+
+    n_source_shapes_expected: set[URIRef] = {
+        ns_sh_skos["Collection-disjointWith-Concept-shape"],
+        ns_sh_skos["Collection-disjointWith-ConceptScheme-shape"],
+        ns_sh_skos["Concept-disjointWith-ConceptScheme-shape"],
+        ns_sh_skos["altLabel-subjects-altLabel-shape"],
+        ns_sh_skos["broaderTransitive-subjects-broaderTransitive-shape"],
+        ns_sh_skos["exactMatch-subjects-exactMatch-shape"],
+        ns_sh_skos["hasTopConcept-subjects-hasTopConcept-shape"],
+        ns_sh_skos["hasTopConcept-subjects-shape"],
+        ns_sh_skos["hiddenLabel-subjects-hiddenLabel-shape"],
+        ns_sh_skos["mappingRelation-subjects-shape"],
+        ns_sh_skos["member-subjects-member-shape"],
+        ns_sh_skos["member-subjects-shape"],
+        ns_sh_skos["memberList-subjects-memberList-equals-member-shape"],
+        ns_sh_skos["prefLabel-subjects-prefLabel-shape"],
+        ns_sh_skos["related-subjects-related-shape"],
+        ns_sh_skos["semanticRelation-subjects-semanticRelation-shape"],
+        ns_sh_skos["semanticRelation-subjects-shape"],
+    }
+    n_source_shapes_computed: set[URIRef] = {
+        x
+        for x in validation_graph.objects(None, NS_SH.sourceShape)
+        if isinstance(x, URIRef)
+    }
+    assert n_source_shapes_expected == n_source_shapes_computed
+
+    n_source_constraints_expected: set[URIRef] = {
+        ns_sh_skos["hasTopConcept-subjects-hasTopConcept-constraint"],
+        ns_sh_skos["mappingRelation-subjects-inScheme-constraint"],
+    }
+    n_source_constraints_computed: set[URIRef] = {
+        x
+        for x in validation_graph.objects(None, NS_SH.sourceConstraint)
+        if isinstance(x, URIRef)
+    }
+    assert n_source_constraints_expected == n_source_constraints_computed
 
 
 def properties_in_shacl_property_path(
