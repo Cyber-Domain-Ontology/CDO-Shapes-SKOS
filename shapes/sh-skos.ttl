@@ -4,15 +4,16 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
-@prefix sh-skos: <http://example.org/shapes/sh-skos/> .
+@prefix sh-skos: <https://shapes.cyberdomainontology.org/shapes/sh-skos/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://example.org/shapes/sh-skos>
+<https://shapes.cyberdomainontology.org/shapes/sh-skos>
 	a owl:Ontology ;
 	rdfs:comment "This shapes graph is a validating null profile of SKOS, checking all noted entailments and requirements from the SKOS RDF file that are not described as 'conventional.'"@en ;
 	rdfs:seeAlso <https://github.com/w3c/dx-prof/issues/56> ;
 	owl:imports <http://www.w3.org/2004/02/skos/core> ;
+	owl:versionIRI sh-skos:0.1.0 ;
 	.
 
 sh-skos:Collection-disjointWith-Concept-shape

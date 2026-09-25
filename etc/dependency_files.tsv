@@ -1,3 +1,6 @@
-http://example.org/shapes/sh-skos	${top_srcdir}/shapes/sh-skos.ttl
 http://example.org/shapes/sh-skos-conventional	${top_srcdir}/shapes/sh-skos-conventional.ttl
 http://www.w3.org/2004/02/skos/core	${top_srcdir}/dependencies/formatted-skos.ttl
+https://shapes.cyberdomainontology.org/shapes/sh-skos	${top_srcdir}/shapes/sh-skos.ttl
+https://shapes.cyberdomainontology.org/shapes/sh-skos-conventional	${top_srcdir}/shapes/sh-skos-conventional.ttl
+https://shapes.cyberdomainontology.org/shapes/sh-skos-conventional/0.1.0	${top_srcdir}/shapes/sh-skos-conventional.ttl
+https://shapes.cyberdomainontology.org/shapes/sh-skos/0.1.0	${top_srcdir}/shapes/sh-skos.ttl

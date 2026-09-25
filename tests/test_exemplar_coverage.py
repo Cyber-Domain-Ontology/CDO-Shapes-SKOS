@@ -163,7 +163,7 @@ def test_exemplar_xfail_validation_coverage() -> None:
     validation_graph = Graph()
     validation_graph.parse("exemplars_XFAIL_validation.ttl")
 
-    ns_sh_skos = Namespace("http://example.org/shapes/sh-skos/")
+    ns_sh_skos = Namespace("https://shapes.cyberdomainontology.org/shapes/sh-skos/")
 
     n_source_shapes_expected: set[URIRef] = {
         ns_sh_skos["Collection-disjointWith-Concept-shape"],
