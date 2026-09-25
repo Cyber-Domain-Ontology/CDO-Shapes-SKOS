@@ -4,4 +4,5 @@
     <uri id="User Entered Import Resolution" uri="../dependencies/formatted-skos.ttl" name="http://www.w3.org/2004/02/skos/core"/>
     <uri id="User Entered Import Resolution" uri="sh-skos-conventional.ttl" name="https://shapes.cyberdomainontology.org/shapes/sh-skos-conventional"/>
     <uri id="User Entered Import Resolution" uri="sh-skos.ttl" name="https://shapes.cyberdomainontology.org/shapes/sh-skos"/>
+    <uri id="User Entered Import Resolution" uri="sh-skos.ttl" name="https://shapes.cyberdomainontology.org/shapes/sh-skos/0.1.0"/>
 </catalog>
