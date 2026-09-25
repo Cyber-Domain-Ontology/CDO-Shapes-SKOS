@@ -13,6 +13,7 @@
 	rdfs:comment "This shapes graph is a validating null profile of SKOS, checking all noted entailments and requirements from the SKOS RDF file that are not described as 'conventional.'"@en ;
 	rdfs:seeAlso <https://github.com/w3c/dx-prof/issues/56> ;
 	owl:imports <http://www.w3.org/2004/02/skos/core> ;
+	owl:versionIRI sh-skos:0.1.0 ;
 	.
 
 sh-skos:Collection-disjointWith-Concept-shape

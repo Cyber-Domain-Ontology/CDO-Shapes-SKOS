@@ -1,4 +1,4 @@
-# imports: https://shapes.cyberdomainontology.org/shapes/sh-skos
+# imports: https://shapes.cyberdomainontology.org/shapes/sh-skos/0.1.0
 
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -11,7 +11,8 @@
 <https://shapes.cyberdomainontology.org/shapes/sh-skos-conventional>
 	a owl:Ontology ;
 	rdfs:comment "This shapes graph is a validating profile of SKOS, checking all noted entailments and requirements from the SKOS RDF file that are described as 'conventional.'"@en ;
-	owl:imports <https://shapes.cyberdomainontology.org/shapes/sh-skos> ;
+	owl:imports sh-skos:0.1.0 ;
+	owl:versionIRI <https://shapes.cyberdomainontology.org/shapes/sh-skos-conventional/0.1.0> ;
 	.
 
 sh-skos:broaderTransitive-subjects-broaderTransitive-shape
