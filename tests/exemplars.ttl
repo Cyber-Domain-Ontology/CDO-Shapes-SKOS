@@ -7,7 +7,7 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
-@prefix sh-skos: <http://example.org/shapes/skos/> .
+@prefix sh-skos: <https://shapes.cyberdomainontology.org/shapes/sh-skos/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -15,7 +15,7 @@
 	a owl:Ontology ;
 	rdfs:comment "This knowledge base instantiates each of the shape-reviewed classes and properties, so SHACL shapes can be exercised for the reviewed ontology."@en ;
 	owl:imports <http://www.w3.org/2004/02/skos/core> ;
-	sh:shapesGraph <http://example.org/shapes/sh-skos-conventional> ;
+	sh:shapesGraph <https://shapes.cyberdomainontology.org/shapes/sh-skos-conventional> ;
 	.
 
 kb:Collection-7a8c45eb-76f7-4040-ac76-b10787e05458
